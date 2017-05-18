@@ -99,6 +99,10 @@ var connectionInterval = setInterval(function() {
         hueBootstrapper.bootstrap();
     }
     if (hueBootstrapper.username) {
+        var hueInterface = server.hardwareInterfaceModules.philipsHue;
+        if (hueInterface) {
+            hueInterface.setup();
+        }
         clearInterval(connectionInterval);
     }
 }, 1000);

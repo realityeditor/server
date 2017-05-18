@@ -3065,3 +3065,5 @@ function checkObjectActivation(id){
         return !objects[id].deactivated
     } else return false;
 }
+
+module.exports.hardwareInterfaceModules = hardwareInterfaceModules;

@@ -56,7 +56,7 @@ if (exports.enabled) {
      **/
     function setup() {
         //load the config file
-        //lights = JSON.parse(fs.readFileSync(__dirname + "/config.json", "utf8"));
+        lights = JSON.parse(fs.readFileSync(__dirname + "/config.json", "utf8"));
 
         if (server.getDebug()) console.log("setup philipsHue");
         for (var key in lights) {
@@ -292,6 +292,8 @@ if (exports.enabled) {
     }
 
     philipsHueServer();
+
+    exports.setup = setup;
 }
 
 
