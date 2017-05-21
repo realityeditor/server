@@ -1,0 +1,142 @@
+<html>
+<head>
+  <title>Reality Editor Starter App</title>
+  <link rel="stylesheet" type="text/css" href="index.css">   
+  <script src="index.js" defer></script>
+</head>
+<body>
+
+<div id='app'>
+
+  <div id='header'>
+    <div id='title'>
+      <img src='resources/logo.svg' id='logo'></img>
+      Reality Editor
+    </div>
+    <div id='subtitle'>STARTER APP</div>
+  </div>
+
+  <div id='contents'>
+    <div class='deviceGroup' id='lego'>
+      LEGO WEDO 2.0
+      <br />
+      <div id='buttonBLE' class='button green'>BLE IS ON</div>
+      <br />
+      <div id='wedoButtons'>
+        <div id = "lego1" class='button green inactive'>WEDO 1</div>
+        <div id = "lego2" class='button green inactive'>WEDO 2</div>
+        <div id = "lego3" class='button green inactive'>WEDO 3</div>
+        <div id = "lego4" class='button green inactive'>WEDO 4</div>
+        <br />
+        <a href="resources/printoutWedo.pdf" target="_blank"><div id = "lego1p" class='button blue inactive clickAble'>PRINT</div></a>
+        <a href="resources/printoutWedo.pdf" target="_blank"><div id = "lego2p" class='button blue inactive clickAble'>PRINT</div></a>
+        <a href="resources/printoutWedo.pdf" target="_blank"><div id = "lego3p" class='button blue inactive clickAble'>PRINT</div></a>
+        <a href="resources/printoutWedo.pdf" target="_blank"><div id = "lego4p" class='button blue inactive clickAble'>PRINT</div></a>
+      </div>
+
+    </div>
+    <div class='deviceGroup' id='philips'>
+      PHILIPS HUE LIGHTS
+      <br />
+      <div class='button white active two leftText inputText'><input id="ipInput" type='input' placeholder='HUE HUB IP'></input></div>
+      <div id='buttonConnect' class='button blue active two'>DISCONNECT</div>
+      <br />
+      <div id='hueButtons'>
+        <div class='button green active'>WEDO 1</div>
+        <div class='button green inactive'>WEDO 2</div>
+        <div class='button green inactive'>WEDO 3</div>
+        <div class='button green inactive'>WEDO 4</div>
+        <br />
+        <div class='button blue active'>PRINT</div>
+        <div class='button blue inactive'>PRINT</div>
+        <div class='button blue inactive'>PRINT</div>
+        <div class='button blue inactive'>PRINT</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<script>
+
+    (function(exports) {
+    // In renderer process (web page).
+    const {ipcRenderer} = require('electron');
+    // console.log(ipcRenderer.sendSync('synchronous-message', 'ping')) // prints "pong"
+    var app = ipcRenderer;
+
+
+
+    var buttonBLE = document.getElementById('buttonBLE');
+var legos = {
+    lego1: document.getElementById('lego1'),
+    lego2: document.getElementById('lego2'),
+    lego3: document.getElementById('lego3'),
+    lego4: document.getElementById('lego4'),
+    lego1p: document.getElementById('lego1p'),
+    lego2p: document.getElementById('lego2p'),
+    lego3p: document.getElementById('lego3p'),
+    lego4p: document.getElementById('lego4p')
+}
+
+
+    app.on('msg', function (event, msg,arg) {
+
+        if(msg === "wedoOff"){
+            if(arg in legos){
+                legos[arg].classList.remove('active');
+                legos[arg].classList.add('inactive');
+                legos[arg+"p"].classList.remove('active');
+                legos[arg+"p"].classList.add('inactive');
+            }
+        }
+        if(msg === "wedoOn"){
+            if(arg in legos){
+                legos[arg].classList.remove('inactive');
+                legos[arg].classList.add('active');
+                legos[arg+"p"].classList.remove('inactive');
+                legos[arg+"p"].classList.add('active');
+            }
+        }
+
+        if(msg === "wedoBLE"){
+
+            console.log(msg,arg); // prints "pong"
+
+            if(arg === "off"){
+                if (buttonBLE.classList.contains('green')) {
+                    buttonBLE.classList.remove('green');
+                    buttonBLE.classList.add('red');
+                    buttonBLE.innerText = "BLE IS OFF";
+                }
+
+                for(var key in legos){
+                    legos[key].classList.remove('active');
+                    legos[key].classList.add('inactive');
+                }
+            }
+            if(arg === "on"){
+                if (buttonBLE.classList.contains('red')) {
+                    buttonBLE.classList.remove('red');
+                    buttonBLE.classList.add('green');
+                    buttonBLE.innerText = "BLE IS ON";
+                }
+            }
+        }
+
+
+    });
+
+    setInterval(function () {
+        // Send async message to main process
+        //  app.send('msg', 'msg','ping')
+    }, 100);
+    }(window));
+
+
+
+</script>
+
+</body>
+</html>

@@ -72,7 +72,7 @@
 
 var globalVariables = {
     developer: true, // show developer web GUI
-    debug: false      // debug messages to console
+    debug: true      // debug messages to console
 };
 
 // ports used to define the server behaviour
@@ -122,7 +122,6 @@ var bodyParser = require('body-parser');  // body parsing middleware
 var express = require('express'); // Web Sever library
 var exphbs = require('express-handlebars'); // View Template library
 
-
 // constrution for the werbserver using express combined with socket.io
 var webServer = express();
 webServer.set('views', 'libraries/webInterface/views');
@@ -158,13 +157,6 @@ var events = require("events"); // node.js events used for the socket events.
 
 // Set web frontend debug to inherit from global debug
 webFrontend.debug = globalVariables.debug;
-
-var pnrickmem = require('pubnub-rickshaw-memory');
-pnrickmem.init({
-    timeout: 1000,
-    dev: true,
-    channel :"server"
-});
 
 /**********************************************************************************************************************
  ******************************************** Constructors ************************************************************

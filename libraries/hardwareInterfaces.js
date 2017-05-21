@@ -299,6 +299,30 @@ exports.addReadListener = function (objectName, nodeName, callBack) {
     }
 };
 
+var uiCallbacks = [];
+var appCallback;
+
+exports.addAppReadListener = function (callBack) {
+    uiCallbacks.push(callBack);
+};
+
+
+exports.addUIReadListener = function (callBack) {
+    appCallback = callBack;
+};
+
+exports.sendToUI = function (msgName, msg) {
+    appCallback(msgName,msg);
+};
+
+exports.sendToApp = function (msgName, msg) {
+    for(var i = 0; i<uiCallbacks.length; i++){
+        uiCallbacks[i](msgName,msg);
+    }
+};
+
+
+
 exports.removeReadListeners = function (objectName){
     var objectID = utilities.readObject(objectLookup, objectName);
     if(callBacks[objectID])
@@ -346,6 +370,7 @@ exports.shutdown = function (){
     for (var i = 0; i < callBacks.shutdownCallBacks.length; i++) {
         callBacks.shutdownCallBacks[i]();
     }
+    process.exit();
 };
 
 function cout(msg) {
