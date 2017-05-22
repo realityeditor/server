@@ -1,0 +1,102 @@
+{
+	"objectId": "light4AGdlp685i1t8",
+	"name": "light4",
+	"ip": "192.168.1.3",
+	"version": "1.7.0",
+	"deactivated": false,
+	"protocol": "R1",
+	"tcs": "3h3CQb",
+	"x": 0,
+	"y": 0,
+	"scale": 1,
+	"matrix": [],
+	"visible": false,
+	"visibleText": false,
+	"visibleEditing": false,
+	"developer": true,
+	"memory": {
+		"matrix": [
+			-1.000663876533508,
+			0.001343310810625553,
+			0.02075032331049442,
+			0,
+			0.007801300846040249,
+			0.949361264705658,
+			0.314089834690094,
+			0,
+			-0.01929460465908051,
+			0.3141836822032928,
+			-0.9491664171218872,
+			0,
+			53.41965484619141,
+			-31.59368324279785,
+			745.0540771484375,
+			1
+		]
+	},
+	"links": {},
+	"nodes": {
+		"light4AGdlp685i1t8brightness": {
+			"name": "brightness",
+			"data": {
+				"value": 0,
+				"mode": "f",
+				"unit": false,
+				"unitMin": 0,
+				"unitMax": 1
+			},
+			"x": 13.027581918233409,
+			"y": -156.9312819666775,
+			"scale": 1,
+			"matrix": [],
+			"type": "node",
+			"stress": 0,
+			"frameSizeX": 100,
+			"frameSizeY": 100,
+			"processedData": {
+				"value": 0,
+				"mode": "f",
+				"unit": false,
+				"unitMin": 0,
+				"unitMax": 1
+			}
+		},
+		"light4AGdlp685i1t8saturation": {
+			"name": "saturation",
+			"data": {
+				"value": 0,
+				"mode": "f",
+				"unit": "",
+				"unitMin": 0,
+				"unitMax": 1
+			},
+			"x": 120.84694060442052,
+			"y": 102.45386525357026,
+			"scale": 1,
+			"matrix": [],
+			"type": "node",
+			"stress": 0,
+			"frameSizeX": 100,
+			"frameSizeY": 100
+		},
+		"light4AGdlp685i1t8hue": {
+			"name": "hue",
+			"data": {
+				"value": 0,
+				"mode": "f",
+				"unit": "",
+				"unitMin": 0,
+				"unitMax": 1
+			},
+			"x": -86.74040563140807,
+			"y": 99.62599109894654,
+			"scale": 1,
+			"matrix": [],
+			"type": "node",
+			"stress": 0,
+			"frameSizeX": 100,
+			"frameSizeY": 100
+		}
+	},
+	"frames": {}
+}

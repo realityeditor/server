@@ -1,0 +1,102 @@
+{
+	"objectId": "light2oOjlxccm9inc",
+	"name": "light2",
+	"ip": "192.168.1.3",
+	"version": "1.7.0",
+	"deactivated": false,
+	"protocol": "R1",
+	"tcs": "2AHjZy",
+	"x": 0,
+	"y": 0,
+	"scale": 1,
+	"matrix": [],
+	"visible": false,
+	"visibleText": false,
+	"visibleEditing": false,
+	"developer": true,
+	"memory": {
+		"matrix": [
+			-1.000867486000061,
+			-0.002353765768930316,
+			-0.004469815641641617,
+			0,
+			-0.003720562206581235,
+			0.9420039653778076,
+			0.3355811238288879,
+			0,
+			0.003423715708777308,
+			0.3355934321880341,
+			-0.9420008063316345,
+			0,
+			7.557671070098877,
+			-13.08744812011719,
+			683.820068359375,
+			1
+		]
+	},
+	"links": {},
+	"nodes": {
+		"light2oOjlxccm9incbrightness": {
+			"name": "brightness",
+			"data": {
+				"value": 0,
+				"mode": "f",
+				"unit": false,
+				"unitMin": 0,
+				"unitMax": 1
+			},
+			"x": 13.027581918233409,
+			"y": -156.9312819666775,
+			"scale": 1,
+			"matrix": [],
+			"type": "node",
+			"stress": 0,
+			"frameSizeX": 100,
+			"frameSizeY": 100,
+			"processedData": {
+				"value": 0,
+				"mode": "f",
+				"unit": false,
+				"unitMin": 0,
+				"unitMax": 1
+			}
+		},
+		"light2oOjlxccm9inchue": {
+			"name": "hue",
+			"data": {
+				"value": 0,
+				"mode": "f",
+				"unit": "",
+				"unitMin": 0,
+				"unitMax": 1
+			},
+			"x": -100.48272155341783,
+			"y": 100.97633173715803,
+			"scale": 1,
+			"matrix": [],
+			"type": "node",
+			"stress": 0,
+			"frameSizeX": 100,
+			"frameSizeY": 100
+		},
+		"light2oOjlxccm9incsaturation": {
+			"name": "saturation",
+			"data": {
+				"value": 0,
+				"mode": "f",
+				"unit": "",
+				"unitMin": 0,
+				"unitMax": 1
+			},
+			"x": 120.84694060442052,
+			"y": 102.45386525357026,
+			"scale": 1,
+			"matrix": [],
+			"type": "node",
+			"stress": 0,
+			"frameSizeX": 100,
+			"frameSizeY": 100
+		}
+	},
+	"frames": {}
+}

@@ -1,39 +1,55 @@
-var noble = require('noble');
 
-noble.on('stateChange', function(state) {
-	if (state === 'poweredOn') {
-		noble.startScanning();
-	} else {
-		noble.stopScanning();
-	}
-});
 
-noble.on('discover', function(peripheral) {
-	console.log('peripheral discovered (' + peripheral.id +
-		' with address <' + peripheral.address +  ', ' + peripheral.addressType + '>,' +
-		' connectable ' + peripheral.connectable + ',' +
-		' RSSI ' + peripheral.rssi + ':');
-	console.log('\thello my local name is:');
-	console.log('\t\t' + peripheral.advertisement.localName);
-	console.log('\tcan I interest you in any of the following advertised services:');
-	console.log('\t\t' + JSON.stringify(peripheral.advertisement.serviceUuids));
 
-	var serviceData = peripheral.advertisement.serviceData;
-	if (serviceData && serviceData.length) {
-		console.log('\there is my service data:');
-		for (var i in serviceData) {
-			console.log('\t\t' + JSON.stringify(serviceData[i].uuid) + ': ' + JSON.stringify(serviceData[i].data.toString('hex')));
-		}
-	}
-	if (peripheral.advertisement.manufacturerData) {
-		console.log('\there is my manufacturer data:');
-		console.log('\t\t' + JSON.stringify(peripheral.advertisement.manufacturerData.toString('hex')));
-	}
-	if (peripheral.advertisement.txPowerLevel !== undefined) {
-		console.log('\tmy TX power level is:');
-		console.log('\t\t' + peripheral.advertisement.txPowerLevel);
-	}
+const discover = require('hue-connect');
+const HueUtil = require('hue-util');
 
-	console.log();
-});
+function interfaceWithHue(ip, token) {
+    var app = 'realityEditorStarter';
+    var ipAddress = ip; // Use the ipAddress of the bridge or null
+    var username = token;
+    var hue = new HueUtil(app, ipAddress, username, onUsernameChange);
 
+    hue.getLights(function(arg1,arg2,arg3){
+        console.log("test", arg1,arg2,arg3);
+    });
+}
+
+
+const search = discover(getToken)
+
+async function getToken (bridge) {
+    try {
+        const token = await bridge.connect({
+            appName: 'realityEditorStarter',
+            deviceName: 'thisComputer'
+        })
+
+        console.log({
+            bridge: bridge.ip,
+            token: token,
+        })
+
+		interfaceWithHue(bridge.ip,token);
+
+        // Stop searching for new bridges.
+        search.cancel()
+    } catch (error) {
+
+        // It's some weird error.
+        if (error.code !== 101) {
+            throw error
+        }
+
+        //console.log("push the button");
+        // User hasn't pressed the bridge button.
+        // Try again in a second.
+        setTimeout(getToken, 1000, bridge)
+    }
+}
+
+function onUsernameChange(newUsername){
+    username = newUsername;
+    // Store the username for future use
+    // otherwise you'll be required to press the hue bridge link button again
+}

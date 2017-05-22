@@ -1,0 +1,102 @@
+{
+	"objectId": "light1Oq6wnqj4cael",
+	"name": "light1",
+	"ip": "192.168.1.3",
+	"version": "1.7.0",
+	"deactivated": false,
+	"protocol": "R1",
+	"tcs": "1Zao7T",
+	"x": 0,
+	"y": 0,
+	"scale": 1,
+	"matrix": [],
+	"visible": false,
+	"visibleText": false,
+	"visibleEditing": false,
+	"developer": true,
+	"memory": {
+		"matrix": [
+			-1.000828146934509,
+			-0.007239577826112509,
+			-0.007197805214673281,
+			0,
+			-0.009347673505544662,
+			0.9334369897842407,
+			0.358619898557663,
+			0,
+			0.004126070067286491,
+			0.3586684167385101,
+			-0.9334559440612793,
+			0,
+			3.650655746459961,
+			-15.31363582611084,
+			707.2115478515625,
+			1
+		]
+	},
+	"links": {},
+	"nodes": {
+		"light1Oq6wnqj4caelbrightness": {
+			"name": "brightness",
+			"data": {
+				"value": 0.10827513474684496,
+				"mode": "f",
+				"unit": false,
+				"unitMin": 0,
+				"unitMax": 1
+			},
+			"x": 13.027581918233409,
+			"y": -156.9312819666775,
+			"scale": 1,
+			"matrix": [],
+			"type": "node",
+			"stress": 0,
+			"frameSizeX": 100,
+			"frameSizeY": 100,
+			"processedData": {
+				"value": 0.10827513474684496,
+				"mode": "f",
+				"unit": false,
+				"unitMin": 0,
+				"unitMax": 1
+			}
+		},
+		"light1Oq6wnqj4caelhue": {
+			"name": "hue",
+			"data": {
+				"value": 0,
+				"mode": "f",
+				"unit": "",
+				"unitMin": 0,
+				"unitMax": 1
+			},
+			"x": -94.30467012667214,
+			"y": 95.57372940471396,
+			"scale": 1,
+			"matrix": [],
+			"type": "node",
+			"stress": 0,
+			"frameSizeX": 100,
+			"frameSizeY": 100
+		},
+		"light1Oq6wnqj4caelsaturation": {
+			"name": "saturation",
+			"data": {
+				"value": 0,
+				"mode": "f",
+				"unit": "",
+				"unitMin": 0,
+				"unitMax": 1
+			},
+			"x": 120.84694060442052,
+			"y": 102.45386525357026,
+			"scale": 1,
+			"matrix": [],
+			"type": "node",
+			"stress": 0,
+			"frameSizeX": 100,
+			"frameSizeY": 100
+		}
+	},
+	"frames": {}
+}
