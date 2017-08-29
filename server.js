@@ -1497,7 +1497,15 @@ function objectWebServer() {
         res.json(blockList);
     });
 
+    webServer.get('/api/items/objects', function (req, res) {
+        var ret = [];
+        for (var v in objects) {
+          if (!objects[v].deactivated)
+          ret.push({id: objects[v].objectId, ip: objects[v].ip, vn: objects[v].version, pr: objects[v].protocol, tcs: objects[v].tcs})
+        }
+        res.json(ret);
 
+    });
 
     /**
      * Normal Links
@@ -1900,7 +1908,7 @@ function objectWebServer() {
     });
 
     // changing the size and possition of an item. *1 is the object *2 is the datapoint id
-   
+
     // ****************************************************************************************************************
 
     if (globalVariables.developer === true) {
